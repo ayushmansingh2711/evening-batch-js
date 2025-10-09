@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <!-- <input type="text">
+        <button>Click</button> -->
+    <script>
+        var year = parseInt(prompt("Please Enter your year of birth:- "));
+
+        var data = new Date
+        let currentyear = data.getFullYear()
+        console.log(currentyear)
+
+        var age = currentyear - year;
+
+        if(age <= 18){
+            console.log("Tu bacha hai")
+        }else if(age > 18 && age <= 20){
+            console.log("18 se 20")
+        }else if(age >= 21){
+            console.log("Tu bahut bada ho gya")
+        }
+
+    </script>
+</body>
+</html>

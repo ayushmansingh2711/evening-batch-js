@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h2>
+            india is my country
+        </h2>
+
+        <h2 id="h2"></h2>
+         <button id="mybtn">click</button>
+
+
+          <script>
+            // let mybtn= document.getElementById("mybtn")
+            //  let h2 = document.getElementById("h2")
+            //   let pass = setInterval(function(){
+            //     h2.innerHTML="bhole baba"
+            //   } ,2000)
+            //   pass;                     
+            
+            let mybtn=document.getElementById("mybtn")
+            let h2=document.getElementById("h2")
+            const myfun=setTimeout(function(){
+              h2.innerHTML="rohit sharam"
+            },2000)
+            myfun;
+            //  mybtn.addEventListener("click",function(){
+            //   clearTimeout(myfun)
+            //  })
+            mybtn.addEventListener("click",function(){
+              clearTimeout(myfun)
+            })
+          </script>
+</body>
+</html>

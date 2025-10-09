@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+          
+
+
+       <h1 id="text">Virat kohli</h1>
+       <button id="mybtn"> click</button>
+       <input type="text" id="myinp">
+   
+
+
+     <script>
+
+         let mybtn = document.getElementById("mybtn")
+         let text = document.getElementById("text")
+         mybtn.addEventListener("click",function(){
+            let myinp = document.getElementById("myinp")
+            text.innerHTML= myinp.value;
+            myinp.value =""
+         })
+        // let mybtn = document.getElementById("mybtn")
+        //  let text = document.getElementById("text")
+        
+        //  mybtn.addEventListener("click",function(){
+        //     let myinp = document.getElementById("myinp")
+        //     text.innerHTML= myinp.value;    
+        //     myin.value = ""
+        //  })
+     </script>
+</body>
+</html>

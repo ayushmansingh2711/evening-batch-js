@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="myinput" />
+    <button id="mybtn">Click</button>
+    <p id="myoutput"></p>
+
+    <script>
+      let a = new Date();
+      let btn = document.getElementById("mybtn");
+      btn.addEventListener("click", function () {
+        let aa = a.getDay();
+        let input = document.getElementById("myinput").value;
+        let output = document.getElementById("myoutput");
+        if ((aa = 4)) {
+          output.innerHTML = "Thursday";
+        }
+      });
+    </script>
+  </body>
+</html>

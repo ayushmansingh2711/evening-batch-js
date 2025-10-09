@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Text Extraction</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+#fileInput {
+    margin-bottom: 20px;
+}
+
+#output {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    white-space: pre-wrap;
+}
+
+    </style>
+</head>
+<body>
+    <input type="file" id="fileInput" accept="image/*">
+    <div id="output"></div>
+
+   
+   <script>
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        var dataUrl = event.target.result;
+
+        processImage(dataUrl);
+    }
+    reader.readAsDataURL(file);
+});
+
+function processImage(dataUrl) {
+    Tesseract.recognize(
+        dataUrl,
+        'eng',
+        { logger: m => console.log(m) }
+    ).then(({ data: { text } }) => {
+        displayText(text);
+    });
+}
+
+function displayText(text) {
+    var outputDiv = document.getElementById('output');
+    outputDiv.textContent = text;
+}
+
+   </script>
+
+</body>
+</html>
