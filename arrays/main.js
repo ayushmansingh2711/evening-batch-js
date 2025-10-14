@@ -37,7 +37,6 @@
  
 //   #splice method
 
-
 //  let cars = ['innova',"fortuner","thar","scorpio"]
 //  cars.splice(1,0,"bmw")
 //  console.log(cars);
