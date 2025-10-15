@@ -15,7 +15,7 @@
 
 
 // ForEach  method   parameter - 1
-// map  method        parameter -         objects
+// map  method        parameter -1         objects
 // filter method   condition / parameter 1
 // reduce method   parameter 2
 
@@ -29,10 +29,10 @@
 
 // forEach method
 
-let numbers = [1,2,3,4,5,6]
-numbers.forEach( function(num) {
-    console.log(num)
-})
+// let numbers = [1,2,3,4,5,6]
+// numbers.forEach( function(num) {
+//     console.log(num)
+// })
 
 
 //  map method
