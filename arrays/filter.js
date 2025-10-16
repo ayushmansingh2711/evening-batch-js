@@ -9,4 +9,4 @@
 // console.log(resutl)
 
   
-// 1 2 3 4 384 6 464 ===  
+// 1 2 3 4 384 6 464 ===   even num 
