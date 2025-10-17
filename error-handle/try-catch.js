@@ -18,5 +18,4 @@
 // }
 // console.log ("you can vote ")
 
-
-// note - using try-catch write a program
+ 
