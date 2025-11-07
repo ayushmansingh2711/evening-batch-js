@@ -6,19 +6,23 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="text" id="myinput" />
+    <input type="text" id="myinput" placeholder="Enter something" />
     <button id="mybtn">Click</button>
     <p id="myoutput"></p>
 
     <script>
-      let a = new Date();
       let btn = document.getElementById("mybtn");
+
       btn.addEventListener("click", function () {
-        let aa = a.getDay();
+        let a = new Date();
+        let day = a.getDay(); // get current day number (0=Sunday, 6=Saturday)
         let input = document.getElementById("myinput").value;
         let output = document.getElementById("myoutput");
-        if ((aa = 4)) {
-          output.innerHTML = "Thursday";
+
+        if (day === 4) { // ✅ use === instead of =
+          output.innerHTML = "Today is Thursday";
+        } else {
+          output.innerHTML = "Today is not Thursday";
         }
       });
     </script>

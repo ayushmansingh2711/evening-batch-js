@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e90ff, #87cefa);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        /* Search Box */
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #fff;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            width: 70%;
+        }
+
+        .search-box button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background: #333;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background: #555;
+        }
+
+        /* Card Styles */
+        .card {
+            display: none;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            opacity: 0;
+        }
+
+        .card.show {
+            display: block;
+            transform: perspective(1000px) rotateY(0deg);
+            opacity: 1;
+        }
+
+        .card-content {
+            text-align: center;
+        }
+
+        .card-content h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .card-content .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .card-content .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #1e90ff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .card-content .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>GitHub User Search</h1>
+        <div class="search-box">
+            <input type="text" placeholder="Enter GitHub Username" id="user">
+            <button>Search</button>
+        </div>
+        <div id="output" class="card"></div> <!-- This will display the API response -->
+    </div>
+
+    <script>
+        let user = document.getElementById("user");
+        let btn = document.querySelector("button");
+        let output = document.getElementById("output");
+
+        btn.addEventListener("click", async function() {
+            try {
+                let api = await fetch(`https://api.instagram.com/users/${user.value}`);
+                if (!api.ok) {
+                    throw new Error("User not found");
+                }
+                let data = await api.json();
+
+                // Display the user data in the browser
+                output.innerHTML = `
+                    <div class="card-content">
+                        <h2>${data.name || "No Name Available"}</h2>
+                        <img src="${data.avatar_url}" alt="Avatar" class="avatar">
+                        <p><strong>Username:</strong> ${data.login}</p>
+                        <p><strong>Bio:</strong> ${data.bio || "No Bio Available"}</p>
+                        <p><strong>Public Repos:</strong> ${data.public_repos}</p>
+                        <p><strong>Followers:</strong> ${data.followers}</p>
+                        <p><strong>Following:</strong> ${data.following}</p>
+                        <a href="${data.html_url}" target="_blank" class="btn">View Profile</a>
+                    </div>
+                `;
+                output.classList.add("show"); // Add a class to make the card visible
+            } catch (error) {
+                output.innerHTML = `<p style="color: red;">${error.message}</p>`;
+                output.classList.remove("show"); // Remove the card class if there's an error
+            }
+        });
+    </script>
+
+</body>
+</html>
